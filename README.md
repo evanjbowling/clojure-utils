@@ -2,9 +2,13 @@
 
 Collection of utility methods.
 
-## Installation
-
 ## Usage
+Leiningen
+
+```
+[com.evanjbowling.utils "0.1.0-SNAPSHOT"]
+```
+
 
 ## Examples
 
