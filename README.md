@@ -1,5 +1,7 @@
 # com.evanjbowling.utils
 
+[![Build Status](https://travis-ci.org/evanjbowling/clojure-utils.svg?branch=master)](https://travis-ci.org/evanjbowling/clojure-utils)
+
 Collection of utility methods.
 
 ## Usage
@@ -12,9 +14,9 @@ Leiningen
 
 ## Examples
 
-```
+```clojure
 (require '[com.evanjbowling.utils :as utils])
-(utils/ls)
+(utils/inspect-all)
 ```
 
 
