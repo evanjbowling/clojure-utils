@@ -5,4 +5,5 @@
   :plugins      [[lein-cljfmt         "0.6.4"]]
   :dependencies [[org.clojure/clojure "1.8.0"]]
   :target-path "target/%s"
+  :repl-options {:init-ns com.evanjbowling.utils}
   :profiles {:uberjar {:aot :all}})

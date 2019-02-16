@@ -15,12 +15,12 @@
 (defn p
   "Pretty print and sort keys of maps"
   [x]
-  (let [sort-fn (fn [y]
-                  (if (map? y)
-                    (into (sorted-map) y)
-                    y))]
-    (clojure.pprint/pprint
-     (clojure.walk/postwalk sort-fn x))))
+  (-> (fn [y]
+        (if (map? y)
+          (into (sorted-map) y)
+          y))
+      (clojure.walk/postwalk x)
+	  clojure.pprint/pprint))
 
 ;;
 ;; concurrency
