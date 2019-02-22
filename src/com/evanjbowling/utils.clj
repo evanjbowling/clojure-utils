@@ -1,7 +1,9 @@
 (ns com.evanjbowling.utils
   (:require
    [clojure.pprint]
-   [clojure.walk]))
+   [clojure.walk])
+  (:import
+   (java.io FileInputStream)))
 
 ;;
 ;; convenience
@@ -21,6 +23,38 @@
           y))
       (clojure.walk/postwalk x)
       clojure.pprint/pprint))
+
+(defn print-file-bytes
+  "Print contents of file in hex with decimal offset.
+  Optional width parameter to set number of bytes printed
+  per row."
+  ([f] (print-file-bytes f 4))
+  ([f width]
+   (let [in (FileInputStream. ^String f)
+         offset (fn [n width] (int (/ (dec n) width)))
+         print-buffer
+         (fn [off ba]
+           (printf "%04d  %s\n"
+                   off
+                   (clojure.string/join \space
+                                        (map #(format "%02X" %) ba))))]
+     (try
+       (loop [b (.read in)
+              buffer []
+              n 0]
+         (if (= -1 b)
+           (if (empty? buffer)
+             nil
+             (print-buffer (offset n width) buffer))
+           (let [buffer' (conj buffer b)
+                 n' (inc n)
+                 rbuffer (if (= (count buffer') width) [] buffer')]
+             (when (= (count buffer') width)
+               (print-buffer (offset n' width) buffer'))
+             (recur (.read in) rbuffer n'))))
+       (finally
+         (when (not= nil in)
+           (.close in)))))))
 
 ;;
 ;; concurrency
