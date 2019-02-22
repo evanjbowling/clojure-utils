@@ -1,4 +1,4 @@
-# com.evanjbowling.utils
+# com.evanjbowling/utils
 
 [![Build Status](https://travis-ci.org/evanjbowling/clojure-utils.svg?branch=master)](https://travis-ci.org/evanjbowling/clojure-utils)
 
@@ -8,7 +8,7 @@ Collection of utility methods.
 Leiningen
 
 ```
-[com.evanjbowling.utils "0.1.0-SNAPSHOT"]
+[com.evanjbowling/utils "0.1.0-SNAPSHOT"]
 ```
 
 
