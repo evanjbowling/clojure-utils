@@ -1,6 +1,6 @@
 # com.evanjbowling/utils
 
-[![Build Status](https://travis-ci.org/evanjbowling/clojure-utils.svg?branch=master)](https://travis-ci.org/evanjbowling/clojure-utils)
+[![Build Status](https://travis-ci.org/evanjbowling/clojure-utils.svg?branch=master)](https://travis-ci.org/evanjbowling/clojure-utils) [![Dependencies Status](https://versions.deps.co/evanjbowling/clojure-utils/status.svg)](https://versions.deps.co/evanjbowling/clojure-utils)
 
 Collection of utility methods.
 
