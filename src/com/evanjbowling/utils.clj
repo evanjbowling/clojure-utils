@@ -3,7 +3,8 @@
    [clojure.pprint]
    [clojure.walk])
   (:import
-   (java.io FileInputStream)))
+   (java.lang.management ManagementFactory RuntimeMXBean)
+   (java.io File FileInputStream)))
 
 ;;
 ;; convenience
@@ -23,6 +24,16 @@
           y))
       (clojure.walk/postwalk x)
       clojure.pprint/pprint))
+
+(defn classpaths
+  "Classpaths used by a particular class loader, system by default.
+  Accepts :system and :boot."
+  ([] (classpaths :system))
+  ([cl-type]
+   (-> (case cl-type
+         :system (.getClassPath (ManagementFactory/getRuntimeMXBean))
+         :boot (.getBootClassPath (ManagementFactory/getRuntimeMXBean)))
+       (clojure.string/split (re-pattern File/pathSeparator)))))
 
 (defn print-file-bytes
   "Print contents of file in hex with decimal offset.
